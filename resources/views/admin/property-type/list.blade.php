@@ -1,8 +1,10 @@
 @extends('admin.layout.app')
 
+@section('title', 'List property | PH24363')
 @section('heading-title', 'Property Type Manager')
-@section('heading-button') 
-<a href="{{ route('property-type.create') }}" class="btn btn-primary">Add type</a>
+@section('heading-button')
+    <a href="{{ route('property.create') }}" class="mr-2 btn btn-primary">Add property</a>
+    <a href="{{ route('property-type.create') }}" class="btn btn-primary">Add type</a>
 @endsection
 
 @section('content')
@@ -33,10 +35,10 @@
                 </thead>
                 <tbody>
                     @php
-                    $index = 1;
+                        $index = 1;
                     @endphp
 
-                    @foreach ($types as $type)     
+                    @foreach ($types as $type)
                         <tr>
                             <td>{{ $index++ }}</td>
                             <td>{{ $type->type_name }}</td>
@@ -45,22 +47,26 @@
                                 <form action="{{ route('property-type.destroy', $type) }}" method="POST">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="true">
-                                        <span class="sr-only">Toggle Dropdown</span>
+                                        <button type="button" class="btn btn-info dropdown-toggle dropdown-icon"
+                                            data-toggle="dropdown" aria-expanded="true">
+                                            <span class="sr-only">Toggle Dropdown</span>
                                         </button>
-                                        <div class="dropdown-menu" role="menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, 37px, 0px);">
+                                        <div class="dropdown-menu" role="menu" x-placement="bottom-start"
+                                            style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, 37px, 0px);">
                                             <a class="dropdown-item" href="{{ route('property-type.edit', $type) }}">
-                                                Edit  <i class="fa-solid fa-pencil"></i>
+                                                Edit <i class="fa-solid fa-pencil"></i>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            
-                                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn dropdown-item d-flex align-items-center text-danger">Delete <i style="font-size:10px" class="fas fa-trash-alt"></i>
+
+                                            <button type="submit" onclick="return confirm('Are you sure?')"
+                                                class="btn dropdown-item d-flex align-items-center text-danger">Delete <i
+                                                    style="font-size:10px" class="fas fa-trash-alt"></i>
                                             </button>
 
 
                                             @csrf
                                             @method('DELETE')
-                                            
+
                                         </div>
                                     </div>
                                 </form>

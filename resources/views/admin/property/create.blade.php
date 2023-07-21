@@ -1,6 +1,11 @@
 @extends('admin.layout.app')
 
+@section('title', 'Add new property | PH24363')
 @section('heading-title', 'Add Property')
+
+@section('heading-button')
+    <a href="{{ route('property-type.create') }}" class="mr-2 btn btn-primary">Add type</a>
+@endsection
 
 @section('script')
     <script>
@@ -97,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row my-3">
                     <div class="col-md-8">
                         <label for="description">Description:</label>
                         <textarea class="form-control" id="description" name="description" placeholder="Enter property description"></textarea>
@@ -108,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row my-3">
                     <div class="col-md-4">
                         <label for="price">Price:</label>
                         <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
@@ -125,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row my-3">
                     <div class="col-md-8">
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" id="address" name="address"
@@ -138,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row my-3">
                     <div class="col-md-8">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -230,10 +235,10 @@
 
                     <div class="upload__box mt-3 col-md-12">
                         <div class="upload__btn-box">
-                          <label class="upload__btn">
-                            <span>Upload images</span>
-                            <input type="file" multiple="" class="upload__inputfile" name="images[]">
-                          </label>
+                            <label class="upload__btn">
+                                <span>Upload images</span>
+                                <input type="file" multiple="" class="upload__inputfile" name="images[]">
+                            </label>
                         </div>
                         <div class="upload__img-wrap"></div>
                     </div>

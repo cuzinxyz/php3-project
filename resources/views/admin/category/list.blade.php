@@ -1,8 +1,9 @@
 @extends('admin.layout.app')
 
+@section('title', 'List post | PH24363')
 @section('heading-title', 'Category Manager')
-@section('heading-button') 
-<a href="{{ route('categories.create') }}" class="btn btn-primary">Add category</a>
+@section('heading-button')
+    <a href="{{ route('categories.create') }}" class="btn btn-primary">Add category</a>
 @endsection
 
 @section('content')
@@ -33,20 +34,24 @@
                 </thead>
                 <tbody>
                     @php
-                    $index = 1;
+                        $index = 1;
                     @endphp
 
-                    @foreach ($categories as $category)     
+                    @foreach ($categories as $category)
                         <tr>
                             <td>{{ $index++ }}</td>
                             <td>{{ $category->category_name }}</td>
                             <td>{{ $category->getDescription() }}</td>
                             <td>
                                 <form action="{{ route('categories.destroy', $category) }}" method="POST">
-                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="window.location.href='{{ route('categories.edit', $category) }}'">
+                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                        data-placement="top" title="Edit"
+                                        onclick="window.location.href='{{ route('categories.edit', $category) }}'">
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-danger btn-sm rounded-0" onclick="return confirm('Are you sure?')" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button> 
+                                    <button class="btn btn-danger btn-sm rounded-0"
+                                        onclick="return confirm('Are you sure?')" type="submit" data-toggle="tooltip"
+                                        data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
 
                                     @csrf
                                     @method('DELETE')

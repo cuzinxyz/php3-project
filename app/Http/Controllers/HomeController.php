@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        return view('client.home');
+    }
+
+    public function admin()
+    {
         return view('admin.home');
     }
 }

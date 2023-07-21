@@ -1,8 +1,10 @@
 @extends('admin.layout.app')
 
+@section('title', 'List property | PH24363')
 @section('heading-title', 'Property Manager')
-@section('heading-button') 
-<a href="{{ route('property.create') }}" class="btn btn-primary">Add property</a>
+@section('heading-button')
+    <a href="{{ route('property-type.create') }}" class="mr-2 btn btn-primary">Add type</a>
+    <a href="{{ route('property.create') }}" class="btn btn-primary">Add property</a>
 @endsection
 
 @section('content')
@@ -32,7 +34,7 @@
                         <td>Address</td>
                         <td>Type</td>
                         <th>Contact</th>
-                        <th>Status</th>
+                        {{-- <th>Status</th> --}}
                         <th></th>
                     </tr>
                 </thead>
@@ -46,21 +48,26 @@
                             <td>{{ $property->address }}</td>
                             <td>{{ $property->type_name }}</td>
                             <td>{{ $property->phone_number }}</td>
-                            <td><span class="badge bg-primary">{{ $property->status }}</span> </td>
+                            {{-- <td><span class="badge bg-primary">{{ $property->status }}</span> </td> --}}
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default">Action</button>
-                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="true">
-                                      <span class="sr-only">Toggle Dropdown</span>
+                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon"
+                                        data-toggle="dropdown" aria-expanded="true">
+                                        <span class="sr-only">Toggle Dropdown</span>
                                     </button>
-                                    <form action="{{ route("property.destroy", $property) }}" method="POST">
-                                        <div class="dropdown-menu" role="menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: -10px; transform: translate3d(67px, 37px, 0px);">
-                                            <a class="dropdown-item dropdown-item d-flex align-items-center" href="{{ route('property.edit', $property) }}">
-                                                Edit  <i style="font-size:10px" class="fas fa-pen"></i>
+                                    <form action="{{ route('property.destroy', $property) }}" method="POST">
+                                        <div class="dropdown-menu" role="menu" x-placement="bottom-start"
+                                            style="position: absolute; will-change: transform; top: 0px; left: -10px; transform: translate3d(67px, 37px, 0px);">
+                                            <a class="dropdown-item dropdown-item d-flex align-items-center"
+                                                href="{{ route('property.edit', $property) }}">
+                                                Edit <i style="font-size:10px" class="fas fa-pen"></i>
                                             </a>
                                             <div class="dropdown-divider"></div>
 
-                                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn dropdown-item d-flex align-items-center text-danger">Delete <i style="font-size:10px" class="fas fa-trash-alt"></i>
+                                            <button type="submit" onclick="return confirm('Are you sure?')"
+                                                class="btn dropdown-item d-flex align-items-center text-danger">Delete <i
+                                                    style="font-size:10px" class="fas fa-trash-alt"></i>
                                             </button>
 
 

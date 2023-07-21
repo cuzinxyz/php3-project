@@ -177,7 +177,7 @@
           <div class="title-wrap d-flex justify-content-between">
             <div class="title-box">
               <h2 class="title-a">Latest Properties</h2>
-            </div>w
+            </div>
             <div class="title-link">
               <a href="property-grid.html">All Property
                 <span class="ion-ios-arrow-forward"></span>

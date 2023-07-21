@@ -1,7 +1,10 @@
 @extends('admin.layout.app')
 
+@section('title', 'Add new post | PH24363')
+
 @section('heading-title', 'Add post')
 @section('heading-button')
+    <a href="{{ route('categories.create') }}" class="mr-2 btn btn-primary">Add category</a>
     <a href="{{ route('blog.list') }}" class="btn btn-primary">Back</a>
 @endsection
 
@@ -14,7 +17,7 @@
         });
 
         // upload img
-        $( document ).ready(function() {
+        $(document).ready(function() {
             ImgUpload();
         });
 
@@ -159,46 +162,48 @@
     </style>
 
     <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
-    
+
         <div class="row">
             <div class="col-lg-8">
                 <div class="form-container">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter title">
-                        </div>
-                        <div class="mb-3">
-                            <label for="content" class="form-label">Content</label>
-                            <textarea class="form-control" id="default-editor" name="content"></textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title"
+                            placeholder="Enter title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea class="form-control" id="default-editor" name="content"></textarea>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-container">
-                        <div class="mb-3">
-                            <label for="category_id" class="form-label">Selct category</label>
-                            <a href="{{ route('categories.create') }}" style="text-decoration: underline">Add category</a>
-                            <select class="form-select form-control form-control-lg" id="category" name="category_id">
-                                <option value="">Select category</option>
-                                @foreach ($categories as $category)     
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Selct category</label>
+                        <a href="{{ route('categories.create') }}" style="text-decoration: underline">Add category</a>
+                        <select class="form-select form-control form-control-lg" id="category" name="category_id">
+                            <option value="">Select category</option>
+                            @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="images" class="form-label">Upload images</label>
                     <input class="form-control" type="file" name="thumbnail" accept="image/*" onchange="loadFile(event)">
-                    <img class="rounded mt-1" src="{{ asset('admin/images/thumbnail-blog.jpg') }}" style="width: 300px;height:300px;object-fit:cover" id="output"/>
+                    <img class="rounded mt-1" src="{{ asset('admin/images/thumbnail-blog.jpg') }}"
+                        style="width: 300px;height:300px;object-fit:cover" id="output" />
                     <script>
-                    var loadFile = function(event) {
-                        var output = document.getElementById('output');
-                        output.src = URL.createObjectURL(event.target.files[0]);
-                        output.onload = function() {
-                        URL.revokeObjectURL(output.src) // free memory
-                        }
-                    };
+                        var loadFile = function(event) {
+                            var output = document.getElementById('output');
+                            output.src = URL.createObjectURL(event.target.files[0]);
+                            output.onload = function() {
+                                URL.revokeObjectURL(output.src) // free memory
+                            }
+                        };
                     </script>
 
                 </div>

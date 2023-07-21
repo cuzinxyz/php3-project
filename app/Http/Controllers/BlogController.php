@@ -80,9 +80,6 @@ class BlogController extends Controller
                 ->with('success', "Cập nhật thành công!");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Blog $post)
     {
         $result = $post->delete();

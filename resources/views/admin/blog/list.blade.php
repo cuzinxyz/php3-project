@@ -1,8 +1,10 @@
 @extends('admin.layout.app')
 
+@section('title', 'List post | PH24363')
 @section('heading-title', 'News Manager')
-@section('heading-button') 
-<a href="{{ route('blog.create') }}" class="btn btn-primary">Add news</a>
+@section('heading-button')
+    <a href="{{ route('categories.create') }}" class="mr-2 btn btn-primary">Add property</a>
+    <a href="{{ route('blog.create') }}" class="btn btn-primary">Add news</a>
 @endsection
 
 @section('content')
@@ -35,14 +37,15 @@
                 </thead>
                 <tbody>
                     @php
-                    $index = 1;
+                        $index = 1;
                     @endphp
 
-                    @foreach ($blogs as $blog)     
+                    @foreach ($blogs as $blog)
                         <tr>
                             <td>{{ $index++ }}</td>
                             <td>
-                                <img class="rounded" style="width: 200px; height: 200px; object-fit:cover" src="{{ asset('storage/'.$blog->thumbnail) }}" alt="">
+                                <img class="rounded" style="width: 200px; height: 200px; object-fit:cover"
+                                    src="{{ asset('storage/' . $blog->thumbnail) }}" alt="">
                             </td>
                             <td>{{ $blog->title }}</td>
                             <td>{{ $blog->getContent() }}</td>
@@ -51,16 +54,20 @@
                                 <form action="{{ route('blog.destroy', $blog) }}" method="POST">
                                     @method('DELETE')
 
-                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="window.location.href='{{ route('blog.edit', $blog) }}'">
+                                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                        data-placement="top" title="Edit"
+                                        onclick="window.location.href='{{ route('blog.edit', $blog) }}'">
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-danger btn-sm rounded-0" onclick="return confirm('Are you sure?')" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button> 
+                                    <button class="btn btn-danger btn-sm rounded-0"
+                                        onclick="return confirm('Are you sure?')" type="submit" data-toggle="tooltip"
+                                        data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
 
                                     @csrf
                                 </form>
                             </td>
                         </tr>
-                     @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
