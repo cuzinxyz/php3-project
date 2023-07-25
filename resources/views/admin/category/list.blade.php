@@ -3,6 +3,7 @@
 @section('title', 'List post | PH24363')
 @section('heading-title', 'Category Manager')
 @section('heading-button')
+    <a href="{{ route('blog.create') }}" class="btn btn-primary mr-2">Add news</a>
     <a href="{{ route('categories.create') }}" class="btn btn-primary">Add category</a>
 @endsection
 

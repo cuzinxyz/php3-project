@@ -22,4 +22,5 @@ class Property extends Model
         'phone_number',
         'email',
     ];
+
 }

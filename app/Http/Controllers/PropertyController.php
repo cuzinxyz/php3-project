@@ -20,13 +20,35 @@ class PropertyController extends Controller
             $properties = $properties->map(function ($property) {
                 $propertyTypeId = $property->property_type_id;
                 $propertyTypeName = PropertyType::where('id', $propertyTypeId)->value('type_name');
-            
+
                 $property->type_name = $propertyTypeName;
-            
+
                 return $property;
             });
 
         return view('admin.property.list', compact('properties'));
+    }
+
+    public function getAllProperties(Request $request)
+    {
+        $search = $request->input('search');
+
+        // Truy vấn database với điều kiện tìm kiếm
+        $properties = Property::select('id', 'title', 'price', 'address', 'property_type_id')
+                ->where('title', 'like', "%$search%")
+                ->get();
+
+            $properties = $properties->map(function ($property) {
+                $propertyTypeId = $property->property_type_id;
+                $propertyTypeName = PropertyType::where('id', $propertyTypeId)->value('type_name');
+
+                $property->type_name = $propertyTypeName;
+
+                return $property;
+            });
+
+        return response()
+            ->json($properties);
     }
 
     public function create()
@@ -38,15 +60,15 @@ class PropertyController extends Controller
 
     public function store(PropertyRequest $request)
     {
-        if ($request->hasFile('images')) 
+        if ($request->hasFile('images'))
         {
             $property = Property::create($request->validated());
 
             $images = $request->file('images');
-    
+
             foreach ($images as $image) {
                 $imageName = $image->store('images');
-    
+
                 // Lưu tên tệp vào cơ sở dữ liệu
                 PropertyImage::create([
                     'image_url' => $imageName,
@@ -75,18 +97,18 @@ class PropertyController extends Controller
     {
         $property->update($request->validated());
 
-        if ($request->hasFile('images')) 
+        if ($request->hasFile('images'))
         {
             $images = $request->file('images');
             $oldImages = PropertyImage::where('property_id', $property->id)->get();
-            foreach ($oldImages as $old) 
+            foreach ($oldImages as $old)
             {
                 $resultDelete = Storage::delete($old->image_url);
                 if($resultDelete) {
                     PropertyImage::where('property_id', $property->id)->delete();
                 }
             }
-            foreach ($images as $image) 
+            foreach ($images as $image)
             {
                 $imageName = $image->store('images');
                 if($oldImages) {

@@ -9,7 +9,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('adm/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 
     <script>
         tinymce.init({
@@ -194,7 +194,7 @@
                 <div class="mb-3">
                     <label for="images" class="form-label">Upload images</label>
                     <input class="form-control" type="file" name="thumbnail" accept="image/*" onchange="loadFile(event)">
-                    <img class="rounded mt-1" src="{{ asset('admin/images/thumbnail-blog.jpg') }}"
+                    <img class="rounded mt-1" src="{{ asset('adm/images/thumbnail-blog.jpg') }}"
                         style="width: 300px;height:300px;object-fit:cover" id="output" />
                     <script>
                         var loadFile = function(event) {

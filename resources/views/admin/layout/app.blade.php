@@ -12,11 +12,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/dist/css/adminlte.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapse">
@@ -24,7 +24,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="Abner"
+            <img class="animation__wobble" src="{{ asset('adm/dist/img/AdminLTELogo.png') }}" alt="Abner"
                 height="60" width="60">
         </div>
 
@@ -41,6 +41,27 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block dropdown">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel d-flex dropdown-toggle align-items-center" id="navbarVersionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="image">
+                            <img src="{{ asset('adm/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                                alt="User Image">
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block text-white">CuzinPro</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-menu py-0" aria-labelledby="navbarVersionDropdown"
+                        style="left: 0px; right: inherit;">
+                        <a class="dropdown-item bg-info disabled" href="#">Thay đổi thông tin</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}">Đăng xuất</a>
+                        <a class="dropdown-item"
+                            href="{{ route('index') }}">Go home</a>
+                    </div>
                 </li>
             </ul>
 
@@ -154,23 +175,23 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin.home') }}" class="brand-link">
-                <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="Abner"
+                <img src="{{ asset('adm/dist/img/AdminLTELogo.png') }}" alt="Abner"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">cuzinpro</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
+                {{-- <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <img src="{{ asset('adm/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Alexander Pierce</a>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -326,22 +347,22 @@
     {{-- <script src="https://kit.fontawesome.com/878f67d2d2.js" crossorigin="anonymous"></script> --}}
 
     <!-- jQuery -->
-    <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/jquery/jquery.min.js') }}"></script>
 
     @yield('script')
 
     <!-- Bootstrap -->
-    <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- overlayScrollbars -->
-    <script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
+    <script src="{{ asset('adm/dist/js/adminlte.js') }}"></script>
 
     {{-- <!-- jQuery Mapael -->
-    <script src="{{ asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
-    <script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
+    <script src="{{ asset('adm/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
+    <script src="{{ asset('adm/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
     <!-- ChartJS --> --}}
 
 </body>

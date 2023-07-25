@@ -29,29 +29,24 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect()
-                ->intended('dashboard')
-                    ->withSuccess('Đăng nhập thành công rồi nà!');
+                ->route('admin.home')
+                    ->with('success', 'Đăng nhập thành công!');
         }
         return redirect()->route('login')->with('error', 'Đăng nhập thất bại do sai tài khoản hoặc mật khẩu!');
     }
 
     public function registerSubmit(UserRequest $request)
     {
-        $token = $request->token;
-
-        $verification_link = url('register/verify/'. $token .'/'.$request->email);
-        $subject = "Registration Confirmation";
-        $message = "Please click on this link to verify account: <br> <a href='".$verification_link."'>Click here</a>";
-
-        Mail::to($request->email)->send(new RegisterMail($subject, $message));
-
+        // $token = $request->token;
+        // $verification_link = url('register/verify/'. $token .'/'.$request->email);
+        // $subject = "Registration Confirmation";
+        // $message = "Please click on this link to verify account: <br> <a href='".$verification_link."'>Click here</a>";
+        // Mail::to($request->email)->send(new RegisterMail($subject, $message));
+        // echo 'Email is sent!';
         User::create($request->validated());
-
-        echo 'Email is sent!';
-        // dd($request->validated());
-        // return redirect()
-        //         ->route('login')
-        //             ->withSuccess('Email is sent! Please check your email and verify');
+        return redirect()
+                ->route('login')
+                    ->withSuccess('Email is sent! Please check your email and verify');
     }
 
     public function register_verify($token, $email)
@@ -72,7 +67,7 @@ class UserController extends Controller
     public function destroy()
     {
         Auth::logout();
-        
+
         return redirect()->route('login');
     }
 }

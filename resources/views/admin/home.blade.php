@@ -2,6 +2,7 @@
 
 @section('title', 'Website Manager | PH24363')
 @section('content')
+    @include('admin.layout.errors')
 
     <div class="row">
         <div class="col-lg-3 col-md-4 col-6">
@@ -27,7 +28,7 @@
         </div>
     </div>
 
-<hr>
+    <hr>
 
     <div class="row">
         <div class="col-lg-3 col-md-4 col-6"></div>
@@ -56,7 +57,7 @@
         </div>
     </div>
 
-<hr>
+    <hr>
 
     <div class="row">
         <div class="col-lg-3 col-md-4 col-6">
@@ -82,7 +83,7 @@
         </div>
     </div>
 
-<hr>
+    <hr>
 
     <div class="row">
         <div class="col-lg-3 col-md-4 col-6"></div>
@@ -111,7 +112,7 @@
         </div>
     </div>
 
-<hr>
+    <hr>
 
     <div class="row">
         <div class="col-lg-3 col-md-4 col-6">

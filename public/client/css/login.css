@@ -181,6 +181,7 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     padding: 220px 0;
+    row-gap: 12px;
 }
 .login100-form-title {
     font-family: 'Poppins';

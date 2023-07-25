@@ -8,7 +8,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('adm/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 
     <script>
         tinymce.init({
