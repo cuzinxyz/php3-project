@@ -31,6 +31,25 @@ class HomeController extends Controller
         return view('client.home', compact('banners', 'properties', 'blogs'));
     }
 
+    public function list()
+    {
+        $properties = DB::table('properties')
+            ->leftJoin('property_images', function ($join) {
+                $join->on('properties.id', '=', 'property_images.property_id')
+                    ->whereRaw('property_images.id = (SELECT MIN(id) FROM property_images WHERE property_id = properties.id)');
+            })
+            ->select('properties.id', 'properties.address', 'properties.title', 'properties.price', 'properties.area', 'properties.beds', 'properties.baths', 'property_images.image_url')
+            ->get();
+//dd($properties);
+        return view('client.property-grid', compact('properties'));
+    }
+
+    public function news()
+    {
+        $blogs = Blog::select('slug', 'thumbnail', 'updated_at', 'title')->get();
+
+        return view('client.blog-grid', compact('blogs'));
+    }
     public function show(Property $property)
     {
         $images = PropertyImage::where('property_id', $property->id)->get();

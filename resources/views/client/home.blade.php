@@ -15,14 +15,9 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345</p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Alira
-                      <br> Roan Road One</h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
+                    <h3 class="intro-title mb-4">
+                      <span class="color-b">{{ $banner->title }} </span>
+                    </h3>
                   </div>
                 </div>
               </div>

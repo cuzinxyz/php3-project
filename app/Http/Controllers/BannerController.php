@@ -11,7 +11,8 @@ class BannerController extends Controller
 {
     public function index()
     {
-        $banners = Banner::select('id', 'title', 'image_url')->orderBy('created_at', 'desc')->get();
+        $banners = Banner::select('banners.id', 'banners.title', 'image_url', 'property_id')
+            ->orderBy('banners.created_at', 'desc')->get();
 
         return view('admin.banner.list', compact('banners'));
     }
@@ -37,7 +38,7 @@ class BannerController extends Controller
             if ($result) {
                 return  redirect()
                     ->route('banner.list')
-                        ->with('success', 'Add banner successfully!');
+                    ->with('success', 'Add banner successfully!');
             }
         }
     }

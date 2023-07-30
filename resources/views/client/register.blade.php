@@ -4,17 +4,9 @@
 
 <link rel="stylesheet" href="{{ asset('client/css/login.css') }}">
     <div class="container">
-        <form class="login100-form validate-form mt-2" action="{{ route('registerSubmit') }}" method="POST">
+        <form class="login100-form validate-form mt-2 mx-auto" action="{{ route('registerSubmit') }}" method="POST">
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('client.layout.errors')
 
             @csrf
             <span class="login100-form-title p-b-34">

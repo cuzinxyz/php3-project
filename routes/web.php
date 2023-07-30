@@ -14,7 +14,9 @@ use App\Http\Controllers\NewsCategoriesController;
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/property/{property}', 'show')->name('show');
+    Route::get('/property', 'list')->name('list');
     Route::get('/blog/{slug}', 'blog')->name('blog');
+    Route::get('/blog', 'news')->name('news');
 
 });
 

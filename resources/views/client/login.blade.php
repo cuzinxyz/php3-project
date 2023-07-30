@@ -2,31 +2,11 @@
 
 @section('content')
 
-    @if($message = Session::get('success'))
-        <div class="alert alert-info">
-            {{ $message }}
-        </div>
-    @endif
-
-    @if($message = Session::get('error'))
-        <div class="alert alert-info">
-            {{ $message }}
-        </div>
-    @endif
-
-    @if (count($errors) > 0)
-        <div class = "alert alert-danger mt-4">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        </div>
-    @endif
-
 <link rel="stylesheet" href="{{ asset('client/css/login.css') }}">
     <div class="container">
-        <form class="login100-form validate-form" action="{{ route('loginSubmit') }}" method="POST">
+        <form class="login100-form validate-form mx-auto" action="{{ route('loginSubmit') }}" method="POST">
+            @include('client.layout.errors')
+
             @csrf
             <span class="login100-form-title p-b-34">
                 Account Login

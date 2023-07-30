@@ -150,10 +150,10 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="property-grid.html">Property</a>
+                        <a class="nav-link" href="{{ route('list') }}">Property</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog-grid.html">Blog</a>
+                        <a class="nav-link" href="{{ route('news') }}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
