@@ -30,7 +30,7 @@
                         <th>#</th>
                         <th width="300">Thumbnail</th>
                         <th>Title</th>
-                        <th>Content</th>
+                        {{-- <th>Content</th> --}}
                         <th>Created at</th>
                         <th></th>
                     </tr>
@@ -48,7 +48,7 @@
                                     src="{{ asset('storage/' . $blog->thumbnail) }}" alt="">
                             </td>
                             <td>{{ $blog->title }}</td>
-                            <td>{{ $blog->getContent() }}</td>
+                            {{-- <td>{{ $blog->getContent() }}</td> --}}
                             <td>{{ $blog->getTime() }}</td>
                             <td>
                                 <form action="{{ route('blog.destroy', $blog) }}" method="POST">

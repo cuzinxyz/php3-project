@@ -15,9 +15,13 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/property/{property}', 'show')->name('show');
     Route::get('/property', 'list')->name('list');
+    # begin search
+    Route::post('/property', 'list')->name('searchProperty');
+    # end search
     Route::get('/blog/{slug}', 'blog')->name('blog');
     Route::get('/blog', 'news')->name('news');
-
+    Route::get('/property-type/{type}', 'type')->name('type');
+    Route::get('/category/{category}', 'category')->name('category');
 });
 
 // UserController
@@ -35,7 +39,7 @@ Route::controller(UserController::class)->group(function () {
 });
 
 # ADMIN
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'check.admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         // Homepage admin
         Route::get('/', [HomeController::class, 'admin'])->name('admin.home');

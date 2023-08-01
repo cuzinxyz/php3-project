@@ -30,95 +30,67 @@
   </div>
   <!--/ Carousel end /-->
 
-  <!--/ Services Star /-->
-  <section class="section-services section-t8">
+  <!--====== CARD PART START ======-->
+  <section class="card-area mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Our Services</h2>
+      <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-7 col-sm-9">
+            <div class="single-card card-style-one text-center">
+                <div class="card-image">
+                  <img src="{{ asset('client/img/home-svgrepo-com.svg') }}" alt="Image" />
+                </div>
+                <div class="card-content">
+                  <h4 class="card-title">
+                      <a href="{{ route('type', ['type'=> 2]) }}">Nhà ở</a>
+                  </h4>
+                  {{-- <p class="text">
+                      Short description for the ones who look for something new
+                  </p> --}}
+                </div>
             </div>
+            <!-- single-card -->
           </div>
-        </div>
+          <!-- col -->
+          <div class="col-lg-4 col-md-7 col-sm-9">
+            <div class="single-card card-style-one text-center">
+                <div class="card-image">
+                  <img src="{{ asset('client/img/apartment-svgrepo-com.svg') }}" alt="Image" />
+                </div>
+                <div class="card-content">
+                  <h4 class="card-title">
+                      <a href="{{ route('type', ['type'=> 1]) }}">Chung cư</a>
+                  </h4>
+                  {{-- <p class="text">
+                      Short description for the ones who look for something new
+                  </p> --}}
+                </div>
+            </div>
+            <!-- single-card -->
+          </div>
+          <!-- col -->
+          <div class="col-lg-4 col-md-7 col-sm-9">
+            <div class="single-card card-style-one text-center">
+                <div class="card-image">
+                  <img src="{{ asset('client/img/house-water-svgrepo-com.svg') }}" alt="Image" />
+                </div>
+                <div class="card-content">
+                  <h4 class="card-title">
+                      <a href="{{ route('type', ['type'=> 3]) }}">Biệt thự</a>
+                  </h4>
+                  {{-- <p class="text">
+                      Short description for the ones who look for something new
+                  </p> --}}
+                </div>
+            </div>
+            <!-- single-card -->
+          </div>
+          <!-- col -->
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-gamepad"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Lifestyle</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Loans</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                aliquet elit, eget tincidunt
-                nibh pulvinar a.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-home"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Sell</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- row -->
     </div>
+    <!-- container -->
   </section>
-  <!--/ Services End /-->
+  <!--====== CARD PART ENDS ======-->
 
   <!--/ Property Star /-->
   <section class="section-property section-t8">
@@ -130,7 +102,7 @@
               <h2 class="title-a">Latest Properties</h2>
             </div>
             <div class="title-link">
-              <a href="property-grid.html">All Property
+              <a href="{{ route('list') }}">All Property
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -142,20 +114,20 @@
             <div class="carousel-item-b">
                 <div class="card-box-a card-shadow">
                     <div class="img-box-a">
-                    <img src="{{ asset('storage/'.$property->image_url) }}" style="max-height: 440px;object-fit:contain" alt="" class="img-a img-fluid">
+                    <img src="{{ asset('storage/'.$property->image_url) }}" style="height: 440px;object-fit:contain" alt="" class="img-a img-fluid">
                     </div>
                     <div class="card-overlay">
                     <div class="card-overlay-a-content">
                         <div class="card-header-a">
                         <h2 class="card-title-a">
-                            <a href="property-single.html">
-                                {{ $property->address }}
+                            <a href="{{ route('show', $property->id) }}">
+                                {{ $property->title }}
                             </a>
                         </h2>
                         </div>
                         <div class="card-body-a">
                         <div class="price-box d-flex">
-                            <span class="price-a">rent | $ @money($property->price)</span>
+                            <span class="price-a">{{ $property->type_name }} | $ @money($property->price)</span>
                         </div>
                         <a href="{{ route('show', $property->id) }}" class="link-a">Click here to view
                             <span class="ion-ios-arrow-forward"></span>
@@ -192,6 +164,55 @@
     </div>
   </section>
   <!--/ Property End /-->
+
+  <!--/ News Star /-->
+  <section class="section-news section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Latest News</h2>
+            </div>
+            <div class="title-link">
+              <a href="{{ route('news') }}">All News
+                <span class="ion-ios-arrow-forward"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="new-carousel" class="owl-carousel owl-theme">
+        @foreach ($blogs as $blog)
+        <div class="carousel-item-c">
+          <div class="card-box-b card-shadow news-box">
+            <div class="img-box-b">
+              <img src="{{ asset('storage/'.$blog->thumbnail) }}" style="height: 350px;object-fit:contain" alt="" class="img-b img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-header-b">
+                <div class="card-category-b">
+                  <a href="{{ route('category', $blog->category_id) }}" class="category-b">{{ $blog->category_name }}</a>
+                </div>
+                <div class="card-title-b">
+                  <h2 class="title-2">
+                    <a href="{{ route('blog', $blog->slug) }}">
+                        {{ $blog->title }}
+                    </a>
+                  </h2>
+                </div>
+                <div class="card-date">
+                  <span class="date-b">{{ $blog->updated_at->diffForHumans() }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  <!--/ News End /-->
 
   <!--/ Agents Star /-->
   <section class="section-agents section-t8">
@@ -392,56 +413,6 @@
     </div>
   </section>
   <!--/ Agents End /-->
-
-  <!--/ News Star /-->
-  <section class="section-news section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Latest News</h2>
-            </div>
-            <div class="title-link">
-              <a href="blog-grid.html">All News
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="new-carousel" class="owl-carousel owl-theme">
-        @foreach ($blogs as $blog)
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="{{ asset('storage/'.$blog->thumbnail) }}" style="max-height: 350px;object-fit:contain" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">House</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="{{ route('blog', $blog->slug) }}">
-                        {{ $blog->title }}
-                    </a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">{{ $blog->updated_at->diffForHumans() }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </section>
-  <!--/ News End /-->
-
   <!--/ Testimonials Star /-->
   <section class="section-testimonials section-t8 nav-arrow-a">
     <div class="container">

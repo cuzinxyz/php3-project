@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -27,26 +28,27 @@ class UserController extends Controller
     {
         $credentials = $request->validated();
 
-        if (Auth::attempt($credentials)) {
-            return redirect()
-                ->route('admin.home')
-                    ->with('success', 'Đăng nhập thành công!');
+        if (Auth::attempt($credentials))
+        {
+            session()->flash('success', 'Login successful!');
+
+            if(Auth::user()->role == 'admin') {
+                return redirect()
+                    ->route('admin.home');
+            } else {
+                return redirect()
+                    ->route('index');
+            }
         }
         return redirect()->route('login')->with('error', 'Đăng nhập thất bại do sai tài khoản hoặc mật khẩu!');
     }
 
     public function registerSubmit(UserRequest $request)
     {
-        // $token = $request->token;
-        // $verification_link = url('register/verify/'. $token .'/'.$request->email);
-        // $subject = "Registration Confirmation";
-        // $message = "Please click on this link to verify account: <br> <a href='".$verification_link."'>Click here</a>";
-        // Mail::to($request->email)->send(new RegisterMail($subject, $message));
-        // echo 'Email is sent!';
         User::create($request->validated());
         return redirect()
                 ->route('login')
-                    ->withSuccess('Email is sent! Please check your email and verify');
+                    ->withSuccess('Register successfully! Please login!');
     }
 
     public function register_verify($token, $email)

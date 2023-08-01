@@ -8,6 +8,15 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('adm/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea#default-editor',
+            menubar: false,
+            height: 230
+        });
+    </script>
     <script>
         $(document).ready(function() {
             ImgUpload();
@@ -105,7 +114,7 @@
                 <div class="form-row my-3">
                     <div class="col-md-8">
                         <label for="description">Description:</label>
-                        <textarea class="form-control" id="description" name="description" placeholder="Enter property description"></textarea>
+                        <textarea class="form-control" id="default-editor" name="description" placeholder="Enter property description"></textarea>
                     </div>
                     <div class="col-md-4">
                         <label for="area">Area:</label>

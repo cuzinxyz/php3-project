@@ -19,13 +19,40 @@
     <link rel="stylesheet" href="{{ asset('adm/dist/css/adminlte.min.css') }}">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapse">
+{{-- <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-collapse"> --}}
+
+<body class="control-sidebar-slide-open layout-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('adm/dist/img/AdminLTELogo.png') }}" alt="Abner"
-                height="60" width="60">
+            {{-- <img class="animation__wobble" src="{{ asset('adm/dist/img/AdminLTELogo.png') }}" alt="Abner"
+                height="60" width="60"> --}}
+            <div class="square-loading">
+            </div>
+            <style>
+                .square-loading {
+                    width: 100px;
+                    height: 100px;
+                    background-color: #fcfcfc;
+                    border-radius: 8px;
+                    animation: flip 1.2s ease-in-out infinite;
+                }
+
+                @keyframes flip {
+                    0% {
+                        transform: perspective(200px) rotateX(0) rotateY(0);
+                    }
+
+                    50% {
+                        transform: perspective(200px) rotateX(180deg) rotateY(0);
+                    }
+
+                    100% {
+                        transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+                    }
+                }
+            </style>
         </div>
 
         <!-- Navbar -->
@@ -44,7 +71,8 @@
                 </li>
                 <li class="nav-item d-none d-sm-inline-block dropdown">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel d-flex dropdown-toggle align-items-center" id="navbarVersionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="user-panel d-flex dropdown-toggle align-items-center" id="navbarVersionDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="image">
                             <img src="{{ asset('adm/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                                 alt="User Image">
@@ -59,8 +87,7 @@
                         <a class="dropdown-item bg-info disabled" href="#">Thay đổi thông tin</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}">Đăng xuất</a>
-                        <a class="dropdown-item"
-                            href="{{ route('index') }}">Go home</a>
+                        <a class="dropdown-item" href="{{ route('index') }}">Go home</a>
                     </div>
                 </li>
             </ul>
@@ -182,21 +209,10 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                {{-- <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{ asset('adm/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                            alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div> --}}
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview"
+                        role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-header">Property Manager</li>
@@ -323,12 +339,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">

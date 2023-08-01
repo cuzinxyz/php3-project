@@ -192,6 +192,15 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('adm/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea#description',
+        menubar: false,
+        height: 230
+    });
+</script>
     <script>
         $(document).ready(function() {
             ImgUpload();

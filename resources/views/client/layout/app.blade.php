@@ -40,82 +40,14 @@
         </div>
         <span class="close-box-collapse right-boxed ion-ios-close"></span>
         <div class="box-collapse-wrap form">
-            <form class="form-a">
+            <form action="{{ route('searchProperty') }}" method="POST" class="form-a">
+                @csrf
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="form-group">
                             <label for="Type">Keyword</label>
                             <input type="text" class="form-control form-control-lg form-control-a"
-                                placeholder="Keyword">
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="Type">Type</label>
-                            <select class="form-control form-control-lg form-control-a" id="Type">
-                                <option>All Type</option>
-                                <option>For Rent</option>
-                                <option>For Sale</option>
-                                <option>Open House</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <select class="form-control form-control-lg form-control-a" id="city">
-                                <option>All City</option>
-                                <option>Alabama</option>
-                                <option>Arizona</option>
-                                <option>California</option>
-                                <option>Colorado</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="bedrooms">Bedrooms</label>
-                            <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="garages">Garages</label>
-                            <select class="form-control form-control-lg form-control-a" id="garages">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="bathrooms">Bathrooms</label>
-                            <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                                <option>Any</option>
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group">
-                            <label for="price">Min Price</label>
-                            <select class="form-control form-control-lg form-control-a" id="price">
-                                <option>Unlimite</option>
-                                <option>$50,000</option>
-                                <option>$100,000</option>
-                                <option>$150,000</option>
-                                <option>$200,000</option>
-                            </select>
+                                placeholder="Keyword" name="search-key">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -147,32 +79,24 @@
                         <a class="nav-link active" href="{{ route('index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('list') }}">Property</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('news') }}">Blog</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="property-single.html">Property Single</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-                            <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
-                            <a class="dropdown-item" href="agent-single.html">Agent Single</a>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
                         @guest
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         @else
-                            <a class="nav-link text-danger" href="{{ route('admin.home') }}">Admin</a>
+                            @if(Auth::User()->role=='admin')
+                                <a class="nav-link text-danger" target="_blank" href="{{ route('admin.home') }}">Admin</a>
+                            @else
+                                <a href="{{ route('logout') }}" class="nav-link text-info">
+                                Logout</a>
+                            @endif
                         @endguest
+
                     </li>
                 </ul>
             </div>

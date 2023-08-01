@@ -1,7 +1,8 @@
 @extends('client.layout.app')
 
-@section('title', 'Detail property')
-
+@section('title')
+{{ $property->title . ' - ' . $property->type_name }} | EstatePing
+@endsection
 @section('content')
 
   <!--/ Intro Single star /-->
@@ -18,13 +19,15 @@
           <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="property-grid.html">Properties</a>
+                <a href="{{ route('list') }}">Properties</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                {{ $property->address }}
+                <a href="{{ route('type', $property->property_type_id) }}">
+                  {{ $property->type_name }}
+                </a>
               </li>
             </ol>
           </nav>
@@ -42,7 +45,7 @@
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
             @foreach ($images as $image)
                 <div class="carousel-item-b">
-                    <img src="{{ asset('storage/'.$image->image_url) }}" style="max-height: 555px;object-fit:contain" alt="">
+                    <img src="{{ asset('storage/'.$image->image_url) }}" style="height: 555px;object-fit:contain" alt="">
                 </div>
             @endforeach
           </div>
@@ -74,11 +77,11 @@
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Location:</strong>
-                      <span>{{ $property->address }}</span>
+                      <span class="text-right">{{ $property->address }}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Property Type:</strong>
-                      <span>House</span>
+                      <span>{{ $property->type_name }}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Area:</strong>
@@ -108,7 +111,7 @@
               </div>
               <div class="property-description">
                 <p class="description color-text-a">
-                    {{ $property->description }}
+                    {!! $property->description !!}
                 </p>
               </div>
             </div>
